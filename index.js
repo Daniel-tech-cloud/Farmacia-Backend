@@ -11,22 +11,24 @@ const port = 3001;
 app.use(cors());
 
 // Habilita CORS solo para la ruta '/api/data'
-app.use('/api/data', cors());
+app.use('/api/data/laboratorios', cors());
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: '',
+  user: 'root',
   password: '',
   database: ''
 });
 
 connection.connect();
 
-app.get('/api/data', (req, res) => {
-  connection.query('SELECT * FROM Presentaciones', (error, results, fields) => {
+app.get('/api/data/laboratorios', (req, res) => {
+  connection.query('SELECT * FROM Laboratorios', (error, results, fields) => {
     if (error) throw error;
     res.json(results);
+
   });
+
 });
 
 app.listen(port, () => {
