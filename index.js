@@ -1,8 +1,6 @@
-// En tu servidor Node.js (index.js por ejemplo)
-
 const express = require('express');
-const mysql = require('mysql2');
 const cors = require('cors');
+const laboratoriosRoutes = require('./routes/laboratorios');
 
 const app = express();
 const port = 3001;
@@ -10,28 +8,9 @@ const port = 3001;
 // Habilita CORS para todas las solicitudes
 app.use(cors());
 
-// Habilita CORS solo para la ruta '/api/data'
-app.use('/api/data/laboratorios', cors());
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: ''
-});
-
-connection.connect();
-
-app.get('/api/data/laboratorios', (req, res) => {
-  connection.query('SELECT * FROM Laboratorios', (error, results, fields) => {
-    if (error) throw error;
-    res.json(results);
-
-  });
-
-});
+// Monta las rutas relacionadas con los laboratorios
+app.use('/api/laboratorios', laboratoriosRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor API escuchando en http://localhost:${port}`);
 });
-
