@@ -1,13 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const laboratorios = require('./routes/laboratorios');
-const medicamentoRoute = require('./routes/busquedaNombreMedicamento');
-const laboratorioRoute = require('./routes/busquedaLaboratorio');
-const sustanciaRoute = require('./routes/busquedaSustanciaActiva');
-const medicamentoId = require('./routes/busquedaMedicamentoPorId');
+const laboratorios = require('./routes/Laboratorio/laboratorios');
+const medicamentoRoute = require('./routes/Medicamento/busquedaNombreMedicamento');
+const laboratorioRoute = require('./routes/Laboratorio/busquedaLaboratorio');
+const sustanciaRoute = require('./routes/Sustancia/busquedaSustanciaActiva');
+const medicamentoId = require('./routes/Medicamento/busquedaMedicamentoPorId');
 
 const app = express();
-const port = 3001;
 
 // Habilita CORS para todas las solicitudes
 app.use(cors());
@@ -24,6 +23,6 @@ app.use('/api/busqueda/sustancia', sustanciaRoute);
 
 
 
-app.listen(port, () => {
-  console.log(`Servidor API escuchando en http://localhost:${port}`);
+app.listen(process.env.PORt, () => {
+  console.log(`Servidor API escuchando en http://localhost:${process.env.PORt}`);
 });

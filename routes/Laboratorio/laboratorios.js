@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database/config');
+const db = require('../../database/config');
 
 router.get('/', (req, res) => {
   db.query('SELECT * FROM Laboratorios', (error, results, fields) => {
