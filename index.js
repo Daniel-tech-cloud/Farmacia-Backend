@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const laboratorios = require('./routes/Laboratorio/laboratorios');
-const medicamentoRoute = require('./routes/Medicamento/busquedaNombreMedicamento');
-const laboratorioRoute = require('./routes/Laboratorio/busquedaLaboratorio');
+const medicamentoRoute = require('./routes/Medicamento/busquedaNombreMedicamentos');
+const laboratorioRoute = require('./routes/Laboratorio/busquedaNombreLaboratorios');
 const sustanciaRoute = require('./routes/Sustancia/busquedaSustanciaActiva');
 const medicamentoId = require('./routes/Medicamento/busquedaMedicamentoPorId');
 

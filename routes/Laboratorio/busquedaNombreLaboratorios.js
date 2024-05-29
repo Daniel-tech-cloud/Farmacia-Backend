@@ -3,11 +3,11 @@ const router = express.Router();
 const db = require('../../database/config');
 
 router.get('/', (req, res) => {
-  const datoABuscar = req.query.dato;
+  const nombreLaboratorioABuscar = req.query.dato;
   
-  const query = `SELECT * FROM Medicamento WHERE nombre LIKE '%${datoABuscar}%'`;
+  const consultaLaboratorios = `SELECT * FROM Laboratorios WHERE nombre LIKE '%${ nombreLaboratorioABuscar }%'`;
   
-  db.query(query, (error, results) => {
+  db.query(consultaLaboratorios, (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error interno del servidor');
@@ -19,4 +19,3 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
-
