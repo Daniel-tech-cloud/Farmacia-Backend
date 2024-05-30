@@ -5,6 +5,8 @@ const medicamentoRoute = require('./routes/Medicamento/busquedaNombreMedicamento
 const laboratorioRoute = require('./routes/Laboratorio/busquedaNombreLaboratorios');
 const sustanciaRoute = require('./routes/Sustancia/busquedaSustanciaActiva');
 const medicamentoId = require('./routes/Medicamento/busquedaMedicamentoPorId');
+const laboratorioId = require('./routes/Laboratorio/busquedaLaboratorioPorId');
+const sustanciaId = require('./routes/Sustancia/busquedaSustanciaPorId');
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use('/api/laboratorios', laboratorios);
 app.use('/api/busqueda/medicamento', medicamentoRoute);
 app.use('/api/busqueda/medicina', medicamentoId);
 app.use('/api/busqueda/laboratorio', laboratorioRoute);
+app.use('/api/busqueda/lab', laboratorioId);
+app.use('/api/busqueda/sus', sustanciaId);
 app.use('/api/busqueda/sustancia', sustanciaRoute);
 
 
