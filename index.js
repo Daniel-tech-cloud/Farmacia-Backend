@@ -1,32 +1,18 @@
 const express = require('express');
-const cors = require('cors');
-const laboratorios = require('./routes/Laboratorio/laboratorios');
-const medicamentoRoute = require('./routes/Medicamento/busquedaNombreMedicamentos');
-const laboratorioRoute = require('./routes/Laboratorio/busquedaNombreLaboratorios');
-const sustanciaRoute = require('./routes/Sustancia/busquedaSustanciaActiva');
-const medicamentoId = require('./routes/Medicamento/busquedaMedicamentoPorId');
-const laboratorioId = require('./routes/Laboratorio/busquedaLaboratorioPorId');
-const sustanciaId = require('./routes/Sustancia/busquedaSustanciaPorId');
-
 const app = express();
+const db = require('./database/config'); // Asegúrate de configurar la conexión a la base de datos
+const cors = require('cors');  // Importar el paquete cors
 
-// Habilita CORS para todas las solicitudes
+// Importar el router principal
+const routes = require('./routes');
+
+// Usar CORS
 app.use(cors());
 
-// Ver Laboratorios
-app.use('/api/laboratorios', laboratorios);
+// Usar el router principal
+app.use('/api', routes);
 
-// Rutas relacionadas con las búsquedas
-// Nombre de medicamento
-app.use('/api/busqueda/medicamento', medicamentoRoute);
-app.use('/api/busqueda/medicina', medicamentoId);
-app.use('/api/busqueda/laboratorio', laboratorioRoute);
-app.use('/api/busqueda/lab', laboratorioId);
-app.use('/api/busqueda/sus', sustanciaId);
-app.use('/api/busqueda/sustancia', sustanciaRoute);
-
-
-
-app.listen(process.env.PORt, () => {
-  console.log(`Servidor API escuchando en http://localhost:${process.env.PORt}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
