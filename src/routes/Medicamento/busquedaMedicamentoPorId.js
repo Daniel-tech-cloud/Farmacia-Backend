@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const db = require('../../database/config');
+const db = require('../../../database/config');
 
 router.get('/', (req, res) => {
   const datoABuscar = req.query.dato;
