@@ -5,9 +5,14 @@ const db = require('../../../database/config');
 router.get('/', (req, res) => {
   const datoABuscar = req.query.dato;
   
-  const query = `SELECT * FROM Sustancias WHERE nombre LIKE '%${datoABuscar}%'`;
+  // Validando el parámetro a buscar
+  if (!datoABuscar) {
+    return res.status(400).send('El parámetro "dato" es requerido');
+  }
   
-  db.query(query, (error, results) => {
+  const query = `SELECT * FROM Sustancias WHERE nombre LIKE ?`;
+  
+  db.query(query, [`%${datoABuscar}%`], (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error interno del servidor');
