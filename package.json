@@ -3,13 +3,16 @@
     "@tensorflow-models/qna": "^1.0.2",
     "@tensorflow/tfjs": "^4.20.0",
     "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
-    "mysql2": "^3.9.7",
-    "openai": "^4.47.3"
+    "mysql2": "^3.10.1",
+    "openai": "^4.47.3",
+    "sequelize": "^6.37.3"
   },
   "name": "backend-farmacia",
   "version": "1.0.0",
