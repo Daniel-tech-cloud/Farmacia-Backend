@@ -4,12 +4,11 @@
 
 const express = require('express');
 const router = express.Router();
-const { busquedaMedicina, busquedaLaboratorio, busquedaSustancia } = require('../../controllers/events/search');
+const { getMedicamentos, getLaboratorios, getSustancias } = require('../../controllers/events/search');
 
 // Definición de rutas para la búsqueda
-router.get('/medicina', busquedaMedicina);
-router.get('/laboratorio', busquedaLaboratorio );
-router.get('/sustancia', busquedaSustancia);
-
+router.get('/medicamentos', getMedicamentos);
+router.get('/laboratorios', getLaboratorios );
+router.get('/sustancias', getSustancias);
 
 module.exports = router;

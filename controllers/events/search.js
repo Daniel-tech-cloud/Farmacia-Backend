@@ -1,30 +1,61 @@
 
 const express = require('express');
 
-const busquedaMedicina = (req, res = express.response) => {
-    res.json({
-        ok: true,
-        msg:'Búsqueda medicina'
-    });
+const Medicamento = require('../../models/medicamento');
+const Laboratorio = require('../../models/laboratorios');
+const Sustancia = require('../../models/sustancias');
+
+const getMedicamentos = async(req, res = express.response) => {
+    try {
+        const medicamentos = await Medicamento.findAll();
+            res.status(200).json({
+            ok: true,
+            medicamentos
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+            });
+        }
 }
 
-const busquedaLaboratorio = (req, res = express.response) => {
-    res.json({
-        ok: true,
-        msg:'Búsqueda laboratorio'
-    });
+const getLaboratorios = async (req, res = express.response) => {
+    try {
+        const laboratorios = await Laboratorio.findAll();
+            res.status(200).json({
+            ok: true,
+            laboratorios
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+            });
+        }
 }
 
-const busquedaSustancia = (req, res = express.response) => {
-    res.json({
-        ok: true,
-        msg:'Búsqueda sustancia'
-    });
+const getSustancias = async(req, res = express.response) => {
+    try {
+        const sustancias = await Sustancia.findAll();
+            res.status(200).json({
+            ok: true,
+            sustancias
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+            });
+        }
 }
 
 module.exports = {
-    busquedaMedicina,
-    busquedaLaboratorio,
-    busquedaSustancia
+    getMedicamentos,
+    getLaboratorios,
+    getSustancias
 }
 

@@ -28,11 +28,11 @@ const Usuario = sequelize.define('Usuario', {
         allowNull: false,
         unique: true,
         validate: {
-        isEmail: true
+            isEmail: true
         }
-    },
+      },
     pass: {
-        type: DataTypes.STRING(25),
+        type: DataTypes.STRING(60),
         allowNull: false
     }
     }, {
