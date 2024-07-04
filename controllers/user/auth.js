@@ -1,19 +1,13 @@
 
 const { response } = require('express'); 
+const { user } = require('../../models/usuario');
 
 const createUser = (req, res = response) => {
 
-    const { nombre, apPaterno, apMaterno, email, pass } = req.body;
-
-    if(nombre.length == 0 || apPaterno.length == 0 || apMaterno.length == 0){
-        return res.status(400).json({
-            ok: false,
-            msg: 'No se permiten campos vacios.'
-        });
-    }
-
-
-    res.json({
+    const user = new Usuario(req.body);
+    console.log(user);
+    
+    res.status(201).json({
         ok: true,
         msg:'createUser',
         nombre, 
@@ -23,7 +17,6 @@ const createUser = (req, res = response) => {
 }
 
 const login = (req, res = response) => {
-
     const { email, pass } = req.body;
     res.json({
         ok: true,
