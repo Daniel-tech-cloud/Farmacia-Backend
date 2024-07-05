@@ -1,23 +1,16 @@
+// models/laboratorio.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/config');
 
-const Laboratorios = sequelize.define('Laboratorios', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
+const Laboratorio = sequelize.define('Laboratorio', {
     nombre: {
-        type: DataTypes.STRING(35),
+        type: DataTypes.STRING,
         allowNull: false
     },
     descripcion: {
-        type: DataTypes.STRING(200),
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: true
     }
-    }, {
-    tableName: 'Laboratorios',
-    timestamps: false
-});
+    });
 
-module.exports = Laboratorios;
+module.exports = Laboratorio;

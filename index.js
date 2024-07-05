@@ -1,7 +1,6 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const { syncDatabase } = require('./database/config'); // Importa syncDatabase
 
 //* Servidor express
 const app = express();
@@ -16,7 +15,9 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //* Rutas de eventos
-app.use('/api/events/search', require('./routes/events/search'));
+app.use('/api/events/search/medicamentos', require('./routes/search/medicamentos'));
+app.use('/api/events/search/laboratorios', require('./routes/search/laboratorios'));
+app.use('/api/events/search/sustancias', require('./routes/search/sustancias'));
 
 //* Ruta de usuario (Crear, login, generar nuevo token)
 app.use('/api/auth', require('./routes/user/auth'));

@@ -1,23 +1,18 @@
+// models/sustancia.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/config');
 
-const Sustancias = sequelize.define('Sustancias', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
+const Sustancia = sequelize.define('Sustancia', {
     nombre: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         allowNull: false
     },
     descripcion: {
-        type: DataTypes.STRING(255),
-        allowNull: false
-    }
-    }, {
-    tableName: 'Sustancias',
-    timestamps: false
+        type: DataTypes.STRING,
+        allowNull: true
+    }, 
+}, {
+    tableName: 'sustancias', // Especifica el nombre real de la tabla en tu base de datos
 });
 
-module.exports = Sustancias;
+module.exports = Sustancia;

@@ -1,19 +1,14 @@
+// models/presentacion.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/config');
 
-const Presentaciones = sequelize.define('Presentaciones', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
+const Presentacion = sequelize.define('Presentacion', {
     nombre: {
-        type: DataTypes.STRING(75),
+        type: DataTypes.STRING,
         allowNull: false
-    }
-    }, {
-        tableName: 'Presentaciones',
-        timestamps: false
-    });
+    }, 
+}, {
+    tableName: 'presentaciones'
+});
 
-module.exports = Presentaciones;
+module.exports = Presentacion;
