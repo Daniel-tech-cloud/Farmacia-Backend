@@ -48,8 +48,8 @@ const Medicamento = sequelize.define('Medicamento', {
 });
 
 // Definir asociaciones
-Medicamento.belongsTo(Sustancia, { foreignKey: 'idSustancia', as: 'sustancia' });
-Medicamento.belongsTo(Presentacion, { foreignKey: 'idPresentacion', as: 'presentacion' });
-Medicamento.belongsTo(Laboratorio, { foreignKey: 'idLaboratorio', as: 'laboratorio' });
+Medicamento.belongsTo(Sustancia, { foreignKey: 'idSustancia', as: 'sustancias' });
+Medicamento.belongsTo(Presentacion, { foreignKey: 'idPresentacion', as: 'presentaciones' });
+Medicamento.belongsTo(Laboratorio, { foreignKey: 'idLaboratorio', as: 'laboratorios' });
 
 module.exports = Medicamento;

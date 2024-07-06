@@ -1,18 +1,13 @@
 
 const { response } = require('express');
-const Sustancia = require('../../models/sustancias');
-const Presentacion = require('../../models/presentaciones');
-const Laboratorio = require('../../models/laboratorios');
+const Sustancia = require('../../../models/sustancias');
+const Presentacion = require('../../../models/presentaciones');
+const Laboratorio = require('../../../models/laboratorios');
 
 
 const getSustancias = async (req, res = response) => {
     try {
         const Sustancias = await Sustancia.findAll({
-        include: [
-            { model: Sustancia, as: 'sustancias' },
-            { model: Presentacion, as: 'presentaciones' },
-            { model: Laboratorio, as: 'laboratorios' }
-        ]
         });
         res.status(200).json({
         ok: true,
@@ -31,11 +26,6 @@ const getSustanciaById = async (req, res = response) => {
     const { id } = req.params;
     try {
         const sustancia = await Sustancia.findByPk(id, {
-        include: [
-            { model: Sustancia, as: 'sustancias' },
-            { model: Presentacion, as: 'presentaciones' },
-            { model: Laboratorio, as: 'laboratorios' }
-        ]
         });
         if (!sustancia) {
         return res.status(404).json({
@@ -65,11 +55,6 @@ const getSustanciasByName = async (req, res = response) => {
             [Op.like]: `%${nombre}%`
             }
         },
-        include: [
-            { model: Sustancia, as: 'sustancias' },
-            { model: Presentacion, as: 'presentaciones' },
-            { model: Laboratorio, as: 'laboratorios' }
-        ]
         });
         res.status(200).json({
         ok: true,

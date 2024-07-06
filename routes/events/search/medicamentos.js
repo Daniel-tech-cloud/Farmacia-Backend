@@ -1,6 +1,8 @@
 // routes/medicamento.js
+// * host + /api/events/search/medicamentos/
+
 const { Router } = require('express');
-const { getMedicamentos, getMedicamentoById, getMedicamentosByName } = require('../../controllers/search/medicamentos');
+const { getMedicamentos, getMedicamentoById, getMedicamentosByName } = require('../../../controllers/events/search/medicamentos');
 
 const router = Router();
 

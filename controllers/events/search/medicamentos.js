@@ -1,9 +1,9 @@
 // controllers/medicamento.js
 const { response } = require('express');
-const Medicamento = require('../../models/medicamento');
-const Sustancia = require('../../models/sustancias');
-const Presentacion = require('../../models/presentaciones');
-const Laboratorio = require('../../models/laboratorios');
+const Medicamento = require('../../../models/medicamento');
+const Sustancia = require('../../../models/sustancias');
+const Presentacion = require('../../../models/presentaciones');
+const Laboratorio = require('../../../models/laboratorios');
 
 const getMedicamentos = async (req, res = response) => {
     try {

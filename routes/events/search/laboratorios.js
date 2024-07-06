@@ -1,4 +1,6 @@
 // routes/laboratorio.js
+// * host + /api/events/search/laboratorios/
+
 const { Router } = require('express');
 const { getLaboratorios, getLaboratorioById, getLaboratoriosByName } = require('../../controllers/search/laboratorios');
 
