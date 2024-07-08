@@ -1,9 +1,7 @@
 
 const { response } = require('express');
-const Sustancia = require('../../../models/sustancias');
-const Presentacion = require('../../../models/presentaciones');
-const Laboratorio = require('../../../models/laboratorios');
 
+const { Sustancia, Op } = require('../../../models');
 
 const getSustancias = async (req, res = response) => {
     try {
@@ -16,8 +14,8 @@ const getSustancias = async (req, res = response) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-        ok: false,
-        msg: 'Por favor hable con el administrador'
+            ok: false,
+            msg: 'Por favor hable con el administrador'
         });
     }
 }
@@ -40,8 +38,8 @@ const getSustanciaById = async (req, res = response) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-        ok: false,
-        msg: 'Por favor hable con el administrador'
+            ok: false,
+            msg: 'Por favor hable con el administrador'
         });
     }
 }
@@ -57,14 +55,14 @@ const getSustanciasByName = async (req, res = response) => {
         },
         });
         res.status(200).json({
-        ok: true,
-        Sustancias
+            ok: true,
+            sustancia
         });
     } catch (error) {
         console.log(error);
         res.status(500).json({
-        ok: false,
-        msg: 'Por favor hable con el administrador'
+            ok: false,
+            msg: 'Por favor hable con el administrador'
         });
     }
 }

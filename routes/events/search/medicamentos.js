@@ -7,7 +7,7 @@ const { getMedicamentos, getMedicamentoById, getMedicamentosByName } = require('
 const router = Router();
 
 router.get('/', getMedicamentos);
-router.get('/:id', getMedicamentoById);
-router.get('/:nombre', getMedicamentosByName);
+router.get('/search', getMedicamentosByName);
+// router.get('/:id', getMedicamentoById);
 
 module.exports = router;

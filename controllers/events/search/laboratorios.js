@@ -1,33 +1,35 @@
-// controllers/search/laboratorios.js
 const { response } = require('express');
-const { Laboratorio } = require('../../models'); // Asegúrate de ajustar el camino a tu modelo
+const { Laboratorio, Op } = require('../../../models');
+
 
 // Obtener todos los laboratorios
 const getLaboratorios = async (req, res = response) => {
     try {
         const laboratorios = await Laboratorio.findAll();
-        res.json({ ok: true, laboratorios });
+        res.status(200).json({ ok: true, laboratorios });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ ok: false, error: error.message });
     }
 };
 
 // Obtener un laboratorio por ID
-const getLaboratorioById = async (req, res) => {
+const getLaboratorioById = async (req, res = response) => {
     try {
         const { id } = req.params;
         const laboratorio = await Laboratorio.findByPk(id);
         if (!laboratorio) {
             return res.status(404).json({ ok: false, error: 'Laboratorio no encontrado' });
         }
-        res.json({ ok: true, laboratorio });
+        res.json({ ok: true, laboratorio });    
     } catch (error) {
+        console.error(error);
         res.status(500).json({ ok: false, error: error.message });
     }
 };
 
 // Buscar laboratorios por nombre
-const getLaboratoriosByName = async (req, res) => {
+const getLaboratoriosByName = async (req, res = response) => {
     try {
         const { nombre } = req.query;
         if (!nombre) {
@@ -42,6 +44,7 @@ const getLaboratoriosByName = async (req, res) => {
         });
         res.json({ ok: true, laboratorios });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ ok: false, error: error.message });
     }
 };

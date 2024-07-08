@@ -47,9 +47,5 @@ const Medicamento = sequelize.define('Medicamento', {
   tableName: 'Medicamento' // Especifica el nombre exacto de la tabla
 });
 
-// Definir asociaciones
-Medicamento.belongsTo(Sustancia, { foreignKey: 'idSustancia', as: 'sustancias' });
-Medicamento.belongsTo(Presentacion, { foreignKey: 'idPresentacion', as: 'presentaciones' });
-Medicamento.belongsTo(Laboratorio, { foreignKey: 'idLaboratorio', as: 'laboratorios' });
 
 module.exports = Medicamento;
