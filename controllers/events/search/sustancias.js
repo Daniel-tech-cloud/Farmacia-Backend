@@ -5,11 +5,11 @@ const { Sustancia, Op } = require('../../../models');
 
 const getSustancias = async (req, res = response) => {
     try {
-        const Sustancias = await Sustancia.findAll({
+        const sustancias = await Sustancia.findAll({
         });
         res.status(200).json({
         ok: true,
-        Sustancias
+        sustancias
         });
     } catch (error) {
         console.log(error);
@@ -23,9 +23,9 @@ const getSustancias = async (req, res = response) => {
 const getSustanciaById = async (req, res = response) => {
     const { id } = req.params;
     try {
-        const sustancia = await Sustancia.findByPk(id, {
+        const sustancias = await Sustancia.findByPk(id, {
         });
-        if (!sustancia) {
+        if (!sustancias) {
         return res.status(404).json({
             ok: false,
             msg: 'Medicamento no encontrado'
@@ -33,7 +33,7 @@ const getSustanciaById = async (req, res = response) => {
         }
         res.status(200).json({
         ok: true,
-        sustancia
+        sustancias
         });
     } catch (error) {
         console.log(error);
@@ -47,7 +47,7 @@ const getSustanciaById = async (req, res = response) => {
 const getSustanciasByName = async (req, res = response) => {
     const { nombre } = req.query;
     try {
-        const sustancia = await Sustancia.findAll({
+        const sustancias = await Sustancia.findAll({
         where: {
             nombre: {
             [Op.like]: `%${nombre}%`
@@ -56,7 +56,7 @@ const getSustanciasByName = async (req, res = response) => {
         });
         res.status(200).json({
             ok: true,
-            sustancia
+            sustancias
         });
     } catch (error) {
         console.log(error);

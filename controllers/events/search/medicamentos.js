@@ -91,10 +91,6 @@ const getMedicamentosByName = async (req, res = response) => {
 };
 
 module.exports = {
-    getMedicamentosByName
-};
-
-module.exports = {
     getMedicamentos,
     getMedicamentoById,
     getMedicamentosByName
