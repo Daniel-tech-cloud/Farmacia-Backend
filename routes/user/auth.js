@@ -7,6 +7,7 @@ const { check } = require('express-validator');
 const { createUser, login, renew } = require('../../controllers/user/auth'); // Controladores
 const { validarCampos } = require('../../middlewares/validar-campos'); // Middleware
 const Usuario = require('../../models/usuario'); // Modelo
+const { validarJWT } = require('../../middlewares/validar-jwt');
 
 // Definición de rutas para usuario
 router.post(
@@ -28,7 +29,7 @@ router.post(
 );
 
 router.post(
-    '/', 
+    '/login', 
     [  // Middlewares
         check( 'email', 'El email es obligatorio').isEmail(),
         check( 'pass', 'La contaseña es obligatoria').not().isEmpty(), 
@@ -36,6 +37,6 @@ router.post(
     ],
     login );
 
-router.get('/renew', renew );
+router.get('/renew', validarJWT, renew );
 
 module.exports = router;
