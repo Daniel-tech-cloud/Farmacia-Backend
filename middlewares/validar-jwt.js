@@ -27,8 +27,6 @@ const validarJWT = ( req, res = response, next ) => {
         })
     }
 
-
-
     next();
 
 }

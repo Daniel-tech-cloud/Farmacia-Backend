@@ -54,10 +54,10 @@ const login = async (req, res = response) => {
         // Verificar si el usuario existe
         const usuario = await Usuario.findOne({ where: { email } });
         if (!usuario) {
-        return res.status(400).json({
-            ok: false,
-            msg: 'El usuario o la contraseña no son correctos'
-        });
+            return res.status(400).json({
+                ok: false,
+                msg: 'El usuario o la contraseña no son correctos'
+            });
         }
         
         // Verificar la contraseña
@@ -71,10 +71,12 @@ const login = async (req, res = response) => {
 
         // Generar JWT
         const token = await generarJWT(usuario.id, usuario.nombre);
-        
-        res.json({
+
+        res.status(200).json({
             ok: true,
-            msg: `Bienvenido ${ usuario.nombre } ${ usuario.apPaterno }`, 
+            msg: 'Bienvenido',
+            nombre: usuario.nombre,
+            apPaterno: usuario.apPaterno,
             token
         });
 
