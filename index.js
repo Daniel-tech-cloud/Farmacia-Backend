@@ -15,9 +15,17 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //* Rutas de eventos
+//? Search
 app.use('/api/events/search/medicamentos', require('./routes/events/search/medicamentos'));
 app.use('/api/events/search/laboratorios', require('./routes/events/search/laboratorios'));
 app.use('/api/events/search/sustancias', require('./routes/events/search/sustancias'));
+app.use('/api/events/search/presentaciones', require('./routes/events/search/presentaciones'));
+
+//? New
+app.use('/api/events/new/medicamento', require('./routes/events/new/medicamento'));
+app.use('/api/events/new/laboratorio', require('./routes/events/new/laboratorio'));
+app.use('/api/events/new/sustancia', require('./routes/events/new/sustancia'));
+
 
 //* Ruta de usuario (Crear, login, generar nuevo token)
 app.use('/api/auth', require('./routes/user/auth'));
