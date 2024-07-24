@@ -18,16 +18,6 @@ const createMedicament = async (req, res) => {
             const { nombre, sustancia: nombreSustancia, presentacion: nombrePresentacion, laboratorio: nombreLaboratorio, descripcion, indicaciones } = req.body;
             const imagen = req.file ? req.file.buffer : null;
 
-            console.log("Valores recibidos:", {
-                nombre,
-                nombreSustancia,
-                nombrePresentacion,
-                nombreLaboratorio,
-                descripcion,
-                indicaciones,
-                imagen
-            });
-
             // Buscar el ID de la sustancia por nombre
             const sustancia = await Sustancia.findOne({ where: { nombre: nombreSustancia } });
             if (!sustancia) {
