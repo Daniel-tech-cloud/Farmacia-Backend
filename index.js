@@ -30,7 +30,7 @@ app.use('/api/events/new/sustancia', require('./routes/events/new/sustancia'));
 //* Ruta de usuario (Crear, login, generar nuevo token)
 app.use('/api/auth', require('./routes/user/auth'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 const startServer = async () => {
   try {

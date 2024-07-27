@@ -8,6 +8,6 @@ const router = Router();
 
 router.get('/', getLaboratorios);
 router.get('/search', getLaboratoriosByName);
-// router.get('/:id', getLaboratorioById);
+router.get('/:id', getLaboratorioById);
 
 module.exports = router;

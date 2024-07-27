@@ -28,7 +28,7 @@ const getSustanciaById = async (req, res = response) => {
         if (!sustancias) {
         return res.status(404).json({
             ok: false,
-            msg: 'Medicamento no encontrado'
+            msg: 'Sustancia no encontrada'
         });
         }
         res.status(200).json({

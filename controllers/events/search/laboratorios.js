@@ -21,7 +21,10 @@ const getLaboratorioById = async (req, res = response) => {
         if (!laboratorio) {
             return res.status(404).json({ ok: false, error: 'Laboratorio no encontrado' });
         }
-        res.json({ ok: true, laboratorio });    
+        res.status(200).json({ 
+            ok: true,  
+            laboratorio 
+        });    
     } catch (error) {
         console.error(error);
         res.status(500).json({ ok: false, error: error.message });
