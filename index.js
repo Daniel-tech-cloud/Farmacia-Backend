@@ -26,6 +26,9 @@ app.use('/api/events/new/medicamento', require('./routes/events/new/medicamento'
 app.use('/api/events/new/laboratorio', require('./routes/events/new/laboratorio'));
 app.use('/api/events/new/sustancia', require('./routes/events/new/sustancia'));
 
+//? Inventario
+app.use('/api/events/inventory', require('./routes/events/inventory/inventario'));
+
 
 //* Ruta de usuario (Crear, login, generar nuevo token)
 app.use('/api/auth', require('./routes/user/auth'));

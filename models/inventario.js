@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../database/config');
+const sequelize = require('../database/config'); // Ajusta la ruta según la ubicación real
 
 const Inventario = sequelize.define('Inventario', {
     idMedicamento: {
@@ -34,9 +34,9 @@ const Inventario = sequelize.define('Inventario', {
         type: DataTypes.DATE,
         allowNull: false
     }
-    }, {
+}, {
     tableName: 'Inventario',
     timestamps: false
 });
 
-module.exports = Inventario;
+module.exports = Inventario; // Exporta el modelo
