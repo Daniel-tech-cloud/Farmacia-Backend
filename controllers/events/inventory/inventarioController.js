@@ -12,10 +12,11 @@ const getAllInventario = async (req, res) => {
 };
 
 const addInventario = async (req, res) => {
-    const { nombreMedicamento, idLaboratorio, cantidad, precioCompra, precioVenta, fechaCompra, caducidad } = req.body;
+    const { idMedicamento, nombreMedicamento, idLaboratorio, cantidad, precioCompra, precioVenta, fechaCompra, caducidad } = req.body;
 
     try {
-        const nuevoMedicamento = await Inventario.create({
+        const nuevoInventario = await Inventario.create({
+            idMedicamento,
             nombreMedicamento,
             idLaboratorio,
             cantidad,
@@ -25,7 +26,7 @@ const addInventario = async (req, res) => {
             caducidad
         });
 
-        res.status(201).json(nuevoMedicamento);
+        res.status(201).json(nuevoInventario);
     } catch (error) {
         res.status(500).json({ error: 'Error al agregar el medicamento' });
     }
