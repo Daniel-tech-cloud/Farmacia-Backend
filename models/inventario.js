@@ -2,9 +2,14 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/config'); // Ajusta la ruta según la ubicación real
 
 const Inventario = sequelize.define('Inventario', {
+    idInventario: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     idMedicamento: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        allowNull: false
     },
     nombreMedicamento: {
         type: DataTypes.STRING(50),
@@ -34,9 +39,9 @@ const Inventario = sequelize.define('Inventario', {
         type: DataTypes.DATE,
         allowNull: false
     }
-}, {
+    }, {
     tableName: 'Inventario',
     timestamps: false
 });
 
-module.exports = Inventario; // Exporta el modelo
+module.exports = Inventario;
