@@ -1,6 +1,7 @@
 // controllers/inventarioController.js
 
 const Inventario = require('../../../models/inventario');
+const { Op } = require('sequelize');
 
 const getAllInventario = async (req, res) => {
     try {
@@ -71,9 +72,26 @@ const deleteInventario = async (req, res) => {
     }
 };
 
+// Nueva función para obtener los medicamentos caducados
+const getExpiredInventario = async (req, res) => {
+    try {
+        const expiredInventarios = await Inventario.findAll({
+            where: {
+                caducidad: {
+                    [Op.lt]: new Date() // Obtener medicamentos cuya fecha de caducidad es menor a la fecha actual
+                }
+            }
+        });
+        res.json(expiredInventarios);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los medicamentos caducados' });
+    }
+};
+
 module.exports = {
     getAllInventario,
     addInventario,
     updateInventario,
-    deleteInventario
+    deleteInventario,
+    getExpiredInventario
 };
