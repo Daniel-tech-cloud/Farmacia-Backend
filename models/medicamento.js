@@ -42,10 +42,13 @@ const Medicamento = sequelize.define('Medicamento', {
   imagen: {
     type: DataTypes.BLOB,
     allowNull: true
+  },
+  compuesto: { // Agrega este campo
+    type: DataTypes.STRING,
+    allowNull: true
   }
 }, {
   tableName: 'Medicamento' // Especifica el nombre exacto de la tabla
 });
-
 
 module.exports = Medicamento;

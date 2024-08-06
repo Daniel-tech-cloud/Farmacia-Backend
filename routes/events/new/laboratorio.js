@@ -1,13 +1,12 @@
 // routes/laboratorio.js
-// * host + /api/events/search/laboratorios/
+// * host + /api/events/new/laboratorio
 
 const { Router } = require('express');
-const { getLaboratorios, getLaboratorioById, getLaboratoriosByName } = require('../../../controllers/events/search/laboratorios');
+const { createLaboratorio } = require('../../../controllers/events/new/laboratorio');
 
 const router = Router();
 
-router.get('/', getLaboratorios);
-router.get('/search', getLaboratoriosByName);
-// router.get('/:id', getLaboratorioById);
+router.post('/', createLaboratorio);
+
 
 module.exports = router;

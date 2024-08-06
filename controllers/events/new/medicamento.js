@@ -15,7 +15,7 @@ const createMedicament = async (req, res) => {
         }
 
         try {
-            const { nombre, sustancia: nombreSustancia, presentacion: nombrePresentacion, laboratorio: nombreLaboratorio, descripcion, indicaciones } = req.body;
+            const { nombre, sustancia: nombreSustancia, presentacion: nombrePresentacion, laboratorio: nombreLaboratorio, descripcion, indicaciones, compuesto } = req.body;
             const imagen = req.file ? req.file.buffer : null;
 
             // Buscar el ID de la sustancia por nombre
@@ -24,7 +24,6 @@ const createMedicament = async (req, res) => {
                 return res.status(404).json({ ok: false, error: 'Sustancia no encontrada.' });
             }
             const idSustancia = sustancia.id;
-            console.log("ID Sustancia:", idSustancia);
 
             // Buscar el ID de la presentación por nombre
             const presentacion = await Presentacion.findOne({ where: { nombre: nombrePresentacion } });
@@ -32,7 +31,6 @@ const createMedicament = async (req, res) => {
                 return res.status(404).json({ ok: false, error: 'Presentación no encontrada.' });
             }
             const idPresentacion = presentacion.id;
-            console.log("ID Presentacion:", idPresentacion);
 
             // Buscar el ID del laboratorio por nombre
             const laboratorio = await Laboratorio.findOne({ where: { nombre: nombreLaboratorio } });
@@ -40,8 +38,7 @@ const createMedicament = async (req, res) => {
                 return res.status(404).json({ ok: false, error: 'Laboratorio no encontrado.' });
             }
             const idLaboratorio = laboratorio.id;
-            console.log("ID Laboratorio:", idLaboratorio);
-            
+
             // Crear el nuevo medicamento
             const nuevoMedicamento = await Medicamento.create({
                 nombre,
@@ -50,7 +47,8 @@ const createMedicament = async (req, res) => {
                 idLaboratorio,
                 descripcion,
                 indicaciones,
-                imagen
+                imagen,
+                compuesto: compuesto || null // Asegúrate de manejar el campo compuesto correctamente
             });
 
             res.status(201).json({ ok: true, medicamento: nuevoMedicamento });

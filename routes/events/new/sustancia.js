@@ -1,13 +1,11 @@
 // routes/medicamento.js
-// * host + /api/events/search/sustancias/
+// * host + /api/events/new/sustancia/
 
 const { Router } = require('express');
-const { getSustancias, getSustanciaById, getSustanciasByName } = require('../../../controllers/events/search/sustancias');
+const { createSustancia } = require('../../../controllers/events/new/sustancia');
 
 const router = Router();
 
-router.get('/', getSustancias);
-router.get('/search', getSustanciasByName);
-// router.get('/:id', getSustanciaById);
+router.post('/', createSustancia);
 
 module.exports = router;
