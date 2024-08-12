@@ -15,7 +15,7 @@ const upload = multer({ storage });
 const updateMedicament = async (req, res) => {
     try {
         const { id } = req.params;
-        const { nombre, idSustancia, idPresentacion, idLaboratorio, descripcion, indicaciones, compuesto } = req.body;
+        const { nombre, tipo, idSustancia, idPresentacion, idLaboratorio, descripcion, indicaciones, compuesto } = req.body;
 
         const medicamento = await Medicamento.findByPk(id);
         if (!medicamento) {
@@ -23,6 +23,7 @@ const updateMedicament = async (req, res) => {
         }
 
         medicamento.nombre = nombre;
+        medicamento.tipo = tipo;
         medicamento.idSustancia = idSustancia;
         medicamento.idPresentacion = idPresentacion;
         medicamento.idLaboratorio = idLaboratorio;

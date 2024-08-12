@@ -10,6 +10,10 @@ const Medicamento = sequelize.define('Medicamento', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  tipo: {
+    type: DataTypes.STRING(50),
+    allowNull: false
+  },
   idSustancia: {
     type: DataTypes.INTEGER,
     references: {

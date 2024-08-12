@@ -19,6 +19,7 @@ const addInventario = async (req, res) => {
         const nuevoInventario = await Inventario.create({
             idMedicamento,
             nombreMedicamento,
+            tipo,
             idLaboratorio,
             cantidad,
             precioCompra,
@@ -35,7 +36,7 @@ const addInventario = async (req, res) => {
 
 const updateInventario = async (req, res) => {
     const { id } = req.params;
-    const { cantidad, precioCompra, precioVenta, fechaCompra, caducidad } = req.body;
+    const { cantidad, tipo, precioCompra, precioVenta, fechaCompra, caducidad } = req.body;
 
     try {
         const inventario = await Inventario.findByPk(id);
@@ -44,6 +45,7 @@ const updateInventario = async (req, res) => {
         }
 
         inventario.cantidad = cantidad;
+        inventario.tipo = tipo;
         inventario.precioCompra = precioCompra;
         inventario.precioVenta = precioVenta;
         inventario.fechaCompra = fechaCompra;

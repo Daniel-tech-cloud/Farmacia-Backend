@@ -11,6 +11,10 @@ const Inventario = sequelize.define('Inventario', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    tipo: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
     nombreMedicamento: {
         type: DataTypes.STRING(50),
         allowNull: false

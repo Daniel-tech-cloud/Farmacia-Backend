@@ -15,7 +15,7 @@ const createMedicament = async (req, res) => {
         }
 
         try {
-            const { nombre, sustancia: nombreSustancia, presentacion: nombrePresentacion, laboratorio: nombreLaboratorio, descripcion, indicaciones, compuesto } = req.body;
+            const { nombre, tipo, sustancia: nombreSustancia, presentacion: nombrePresentacion, laboratorio: nombreLaboratorio, descripcion, indicaciones, compuesto } = req.body;
             const imagen = req.file ? req.file.buffer : null;
 
             // Buscar el ID de la sustancia por nombre
@@ -42,6 +42,7 @@ const createMedicament = async (req, res) => {
             // Crear el nuevo medicamento
             const nuevoMedicamento = await Medicamento.create({
                 nombre,
+                tipo,
                 idSustancia,
                 idPresentacion,
                 idLaboratorio,
