@@ -1,20 +1,28 @@
 // controllers/inventarioController.js
 
 const Inventario = require('../../../models/inventario');
+const Laboratorio = require('../../../models/laboratorios');
 const { Op } = require('sequelize');
 
 const getAllInventario = async (req, res) => {
     try {
-        const inventarios = await Inventario.findAll();
-        res.json(inventarios);
+        const inventario = await Inventario.findAll({
+            include: [{
+                model: Laboratorio,
+                attributes: ['nombre'] // Selecciona el nombre de laboratorio
+            }]
+        });
+        res.json(inventario);
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener el inventario' });
     }
 };
 
 const addInventario = async (req, res) => {
-    const { idMedicamento, nombreMedicamento, idLaboratorio, cantidad, precioCompra, precioVenta, fechaCompra, caducidad } = req.body;
+    const { idMedicamento, nombreMedicamento, tipo, idLaboratorio, cantidad, precioCompra, precioVenta, fechaCompra, caducidad } = req.body;
 
+    console.log(idMedicamento, nombreMedicamento, tipo, idLaboratorio, cantidad, precioCompra, precioVenta, fechaCompra, caducidad );
+    
     try {
         const nuevoInventario = await Inventario.create({
             idMedicamento,

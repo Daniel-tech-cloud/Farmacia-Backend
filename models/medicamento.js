@@ -52,7 +52,7 @@ const Medicamento = sequelize.define('Medicamento', {
     allowNull: true
   }
 }, {
-  tableName: 'Medicamento' // Especifica el nombre exacto de la tabla
+  tableName: 'Medicamento'
 });
 
 module.exports = Medicamento;

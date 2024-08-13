@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const Laboratorio = require('../models/laboratorios');
 const sequelize = require('../database/config'); // Ajusta la ruta según la ubicación real
 
 const Inventario = sequelize.define('Inventario', {
@@ -47,5 +48,7 @@ const Inventario = sequelize.define('Inventario', {
     tableName: 'Inventario',
     timestamps: false
 });
+
+Inventario.belongsTo(Laboratorio, { foreignKey: 'idLaboratorio' });
 
 module.exports = Inventario;
