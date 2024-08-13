@@ -2,7 +2,6 @@
   "dependencies": {
     "@tensorflow-models/qna": "^1.0.2",
     "@tensorflow/tfjs": "^4.20.0",
-    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
