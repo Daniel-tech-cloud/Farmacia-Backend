@@ -32,10 +32,9 @@ app.use('/api/events/update/laboratorio', require('./routes/events/update/labora
 app.use('/api/events/update/sustancia', require('./routes/events/update/sustancia'));
 
 //? Delete 
-// TODO
-// app.use('/api/events/delete/medicamento', require('./routes/events/delete/medicamento'));
-// app.use('/api/events/delete/laboratorio', require('./routes/events/delete/laboratorio'));
-// app.use('/api/events/delete/sustancia', require('./routes/events/delete/sustancia'));
+app.use('/api/events/delete/medicamento', require('./routes/events/delete/medicamento'));
+app.use('/api/events/delete/laboratorio', require('./routes/events/delete/laboratorio'));
+app.use('/api/events/delete/sustancia', require('./routes/events/delete/sustancia'));
 
 //? Inventario
 app.use('/api/events/inventory', require('./routes/events/inventory/inventario'));

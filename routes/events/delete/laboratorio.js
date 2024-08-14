@@ -1,12 +1,12 @@
-// routes/laboratorio.js
-// // * host + /api/events/delete/laboratorio
 
-// const { Router } = require('express');
-// const { createLaboratorio } = require('../../../controllers/events/delete/laboratorio');
+// * host + /api/events/delete/laboratorio
 
-// const router = Router();
+const { Router } = require('express');
+const { deleteLaboratorio } = require('../../../controllers/events/delete/laboratorio');
 
-// router.post('/', createLaboratorio);
+const router = Router();
+
+router.delete('/:id', deleteLaboratorio);
 
 
-// module.exports = router;
+module.exports = router;

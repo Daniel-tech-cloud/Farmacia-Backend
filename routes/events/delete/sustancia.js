@@ -1,11 +1,11 @@
-// // routes/medicamento.js
-// // * host + /api/events/delete/sustancia/
+// routes/medicamento.js
+// * host + /api/events/delete/sustancia/
 
-// const { Router } = require('express');
-// const { createSustancia } = require('../../../controllers/events/new/sustancia');
+const { Router } = require('express');
+const { deleteSustancia } = require('../../../controllers/events/delete/sustancia');
 
-// const router = Router();
+const router = Router();
 
-// router.post('/', createSustancia);
+router.delete('/:id', deleteSustancia);
 
-// module.exports = router;
+module.exports = router;

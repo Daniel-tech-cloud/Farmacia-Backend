@@ -17,13 +17,13 @@ const getLaboratorios = async (req, res = response) => {
 const getLaboratorioById = async (req, res = response) => {
     try {
         const { id } = req.params;
-        const laboratorio = await Laboratorio.findByPk(id);
-        if (!laboratorio) {
+        const laboratorios = await Laboratorio.findByPk(id);
+        if (!laboratorios) {
             return res.status(404).json({ ok: false, error: 'Laboratorio no encontrado' });
         }
         res.status(200).json({ 
             ok: true,  
-            laboratorio 
+            laboratorios
         });    
     } catch (error) {
         console.error(error);
