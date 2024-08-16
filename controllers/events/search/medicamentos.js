@@ -77,14 +77,17 @@ const getMedicamentoById = async (req, res = response) => {
 };
 
 const getMedicamentosByName = async (req, res = response) => {
-    const { nombre } = req.query; // Usar req.query en lugar de req.params
-    console.log('Nombre buscado:', nombre); // Log adicional para verificar el parámetro
+    const { nombre, descripcion } = req.query;
+    console.log('Nombre buscado:', nombre);
+    console.log('Descripción buscada:', descripcion); // Log adicional para verificar el parámetro
+
     try {
         const medicamentos = await Medicamento.findAll({
             where: {
-                nombre: {
-                    [Op.like]: `%${nombre}%`
-                }
+                [Op.or]: [
+                    { nombre: { [Op.like]: `%${nombre}%` } },
+                    { descripcion: { [Op.like]: `%${descripcion}%` } } // Búsqueda por descripción
+                ]
             },
             include: [
                 { model: Sustancia, as: 'sustancias' },
@@ -92,13 +95,14 @@ const getMedicamentosByName = async (req, res = response) => {
                 { model: Laboratorio, as: 'laboratorios' }
             ]
         });
+
         if (medicamentos.length === 0) {
             return res.status(404).json({
                 ok: false,
                 msg: 'Medicamento no encontrado'
             });
         }
-        
+
         const medicamentosConImagen = medicamentos.map(med => {
             let imagenBase64 = null;
             if (med.imagen) {
@@ -109,7 +113,7 @@ const getMedicamentosByName = async (req, res = response) => {
                 imagen: imagenBase64
             };
         });
-        
+
         res.status(200).json({
             ok: true,
             medicamentos: medicamentosConImagen
@@ -122,6 +126,7 @@ const getMedicamentosByName = async (req, res = response) => {
         });
     }
 };
+
 
 module.exports = {
     getMedicamentos,
