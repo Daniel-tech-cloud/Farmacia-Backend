@@ -1,5 +1,5 @@
 // routes/medicamento.js
-// * host + /api/events/update/medicament/
+// * host + /api/events/update/medicamento/
 
 const { Router } = require('express');
 const { updateMedicament, upload } = require('../../../controllers/events/update/medicamento.js');

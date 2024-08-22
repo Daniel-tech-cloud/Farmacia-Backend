@@ -12,7 +12,7 @@ const Medicamento = sequelize.define('Medicamento', {
   },
   tipo: {
     type: DataTypes.STRING(50),
-    allowNull: false
+    allowNull: true
   },
   idSustancia: {
     type: DataTypes.INTEGER,
